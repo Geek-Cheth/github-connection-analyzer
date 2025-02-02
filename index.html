@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Connection Analyzer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="header-section">
+            <h1>
+                <i class="fab fa-github fa-lg pulse"></i>
+                GitHub Connection Analyzer
+            </h1>
+            <p class="header-subtitle">Analyze and manage your GitHub network efficiently</p>
+        </div>
+        <div class="input-section">
+            <input type="text" id="username" placeholder="Enter GitHub Username" autocomplete="off">
+            <input type="password" id="pat" placeholder="Enter GitHub PAT Token" autocomplete="off">
+            <button onclick="analyzeConnections()">
+                <i class="fas fa-search"></i> Analyze
+            </button>
+            <button onclick="showRecommendedUnfollows()" class="recommended-btn">
+                <i class="fas fa-user-shield"></i> Show Recommended Unfollows
+            </button>
+        </div>
+        <div id="loading" class="loading hidden">Analyzing...</div>
+        <div id="error" class="error hidden"></div>
+        <div id="results" class="results hidden">
+            <div class="stats">
+                <div class="stat-box">
+                    <h3>Followers</h3>
+                    <span id="followers-count">0</span>
+                </div>
+                <div class="stat-box">
+                    <h3>Following</h3>
+                    <span id="following-count">0</span>
+                </div>
+                <div class="stat-box">
+                    <h3>Mutual Connections</h3>
+                    <span id="mutual-count">0</span>
+                </div>
+            </div>
+            <div class="lists-container">
+                <div id="recommended-unfollows" class="list hidden">
+                    <div class="list-header">
+                        <h3>Recommended Unfollows</h3>
+                        <div class="info-tooltip">
+                            <i class="fas fa-info-circle"></i>
+                            <span class="tooltip-text">Users following >2x more people than their followers</span>
+                        </div>
+                        <div class="list-actions">
+                            <input type="checkbox" class="select-all" data-list="recommended-list">
+                            <button class="unfollow-selected" data-list="recommended-list">
+                                <i class="fas fa-user-minus"></i> Unfollow Selected
+                            </button>
+                        </div>
+                    </div>
+                    <ul id="recommended-list"></ul>
+                </div>
+                <div class="list">
+                    <div class="list-header">
+                        <h3>Mutual Connections</h3>
+                        <div class="list-actions">
+                            <input type="checkbox" class="select-all" data-list="mutual-list">
+                            <button class="unfollow-selected" data-list="mutual-list">
+                                <i class="fas fa-user-minus"></i> Unfollow Selected
+                            </button>
+                        </div>
+                    </div>
+                    <ul id="mutual-list"></ul>
+                </div>
+                <div class="list">
+                    <div class="list-header">
+                        <h3>Followers (Not Following Back)</h3>
+                        <div class="list-actions">
+                            <input type="checkbox" class="select-all" data-list="followers-only-list">
+                            <button class="follow-selected" data-list="followers-only-list">
+                                <i class="fas fa-user-plus"></i> Follow Selected
+                            </button>
+                        </div>
+                    </div>
+                    <ul id="followers-only-list"></ul>
+                </div>
+                <div class="list">
+                    <div class="list-header">
+                        <h3>Following (Not Following Back)</h3>
+                        <div class="list-actions">
+                            <input type="checkbox" class="select-all" data-list="following-only-list">
+                            <button class="unfollow-selected" data-list="following-only-list">
+                                <i class="fas fa-user-minus"></i> Unfollow Selected
+                            </button>
+                        </div>
+                    </div>
+                    <ul id="following-only-list"></ul>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="footer-content">
+                <p>
+                    Crafted with <i class="fas fa-heart"></i> by 
+                    <span class="captain">Captain</span> 
+                    <a href="https://github.com/Geek-Cheth" target="_blank" class="github-link">
+                        <i class="fab fa-github"></i> Geek-Cheth
+                    </a>
+                </p>
+                <span class="year">2025 - 2026</span>
+            </div>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
