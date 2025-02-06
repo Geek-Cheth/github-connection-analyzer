@@ -338,7 +338,7 @@ function updateFeedbackStatus(element, isSuccess, message) {
     statusElement.classList.add(isSuccess ? 'success' : 'error');
     statusElement.classList.add('show');
 
-    // Remove the status after 5 seconds
+    // Remove the status after 5 seconds.
     setTimeout(() => {
         statusElement.classList.remove('show');
     }, 5000);
