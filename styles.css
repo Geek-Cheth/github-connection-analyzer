@@ -5,65 +5,62 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-family: 'Inter', sans-serif;
     background: linear-gradient(135deg, #1a1c2c 0%, #2a2d4f 100%);
     line-height: 1.6;
     padding: 20px;
     min-height: 100vh;
-    color: #333;
+    color: #e2e8f0; /* Adjusted to a lighter shade of white */
 }
 
 .header-section {
     text-align: center;
     margin-bottom: 3rem;
     padding: 2rem;
-    background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+    background: rgba(255, 255, 255, 0.08); /* Slightly brighter background */
     border-radius: 20px;
     backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Added subtle shadow */
 }
 
 .header-section h1 {
     font-size: 3.5rem;
     margin-bottom: 1rem;
-    color: transparent;
-    background: linear-gradient(120deg, #2b5876, #4e4376, #6f42c1);
-    -webkit-background-clip: text;
-    background-clip: text;
-    background-size: 200% 200%;
-    animation: gradientFlow 8s ease infinite;
+    color: #fff; /* Changed to white */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Adjust text shadow for better contrast */
 }
 
 .header-section .fa-github {
     font-size: 3rem;
     margin-right: 1rem;
     animation: pulse 2s ease-in-out infinite;
+    color: #8957e5; /* Adjusted color */
 }
 
 .header-subtitle {
     font-size: 1.2rem;
-    color: #4a5568;
+    color: #cbd5e0; /* Adjusted color */
     font-weight: 500;
     margin-top: 0.5rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Added text shadow */
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    background-color: rgba(255, 255, 255, 0.98);
+    background-color: rgba(255, 255, 255, 0.05); /* Darker container background */
     padding: 2.5rem;
     border-radius: 20px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25); /* Increased shadow intensity */
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Added subtle border */
 }
 
 h1 {
     text-align: center;
     margin-bottom: 2.5rem;
     font-size: 3rem;
-    background: linear-gradient(120deg, #2b5876, #4e4376, #6f42c1);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: gradientFlow 8s ease infinite;
+    color: #fff; /* Changed to white for better visibility */
 }
 
 .input-section {
@@ -73,26 +70,31 @@ h1 {
     justify-content: center;
     flex-wrap: wrap;
     padding: 2.5rem;
-    background: linear-gradient(145deg, #ffffff, #f8fafc);
-    border: 1px solid rgba(0,0,0,0.05);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    background: rgba(255, 255, 255, 0.08); /* Darker input section background */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Added subtle border */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15); /* Increased shadow intensity */
     border-radius: 16px;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
 }
 
 input {
     padding: 0.8rem 1rem;
-    border: 2px solid #e1e4e8;
+    border: 2px solid #4a5568; /* Darker border color */
     border-radius: 8px;
     width: 250px;
     font-size: 16px;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1); /* Increased shadow intensity */
+    color: #fff; /* Added text color */
+    background-color: transparent; /* Make input background transparent */
+}
+
+input::placeholder {
+    color: #a0aec0; /* Adjusted placeholder color */
 }
 
 input:focus {
-    border-color: #2188ff;
-    box-shadow: 0 0 0 3px rgba(33,136,255,0.2);
+    border-color: #667eea; /* Adjusted focus border color */
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2); /* Adjusted focus shadow */
     outline: none;
 }
 
@@ -125,13 +127,14 @@ button:hover {
 }
 
 .loading {
-    background: linear-gradient(145deg, #f8fafc, #f0f4f8);
+    background: rgba(255, 255, 255, 0.08); /* Darker loading background */
     padding: 2rem;
     border-radius: 16px;
     font-weight: 600;
-    color: #4a5568;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    color: #e2e8f0; /* Adjusted color */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15); /* Increased shadow intensity */
     animation: pulse 2s infinite;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Added text shadow */
 }
 
 .loading::after {
@@ -141,7 +144,7 @@ button:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent); /* Reduced shine intensity */
     animation: loading-shine 1.5s infinite;
 }
 
@@ -158,7 +161,7 @@ button:hover {
 
 .error {
     background-color: #ffebe9;
-    color: #cb2431;
+    color: #cf222e; /* Adjusted error color for better visibility */
 }
 
 .hidden {
@@ -175,31 +178,29 @@ button:hover {
 
 .stat-box {
     text-align: center;
-    background: linear-gradient(145deg, #ffffff, #f8fafc);
+    background: rgba(255, 255, 255, 0.08); /* Darker stat box background */
     padding: 2.5rem;
     border-radius: 16px;
     min-width: 220px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    border: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15); /* Increased shadow intensity */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Added subtle border */
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .stat-box:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2); /* Increased shadow intensity */
 }
 
 .stat-box h3 {
-    color: #57606a;
+    color: #fff; /* Adjusted color to white */
     margin-bottom: 0.5rem;
 }
 
 .stat-box span {
     font-size: 3rem;
     font-weight: 700;
-    background: linear-gradient(120deg, #2b5876, #4e4376);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #bbdefb; /* Adjusted color to a lighter shade */
     text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
 
@@ -210,24 +211,25 @@ button:hover {
 }
 
 .list {
-    background: linear-gradient(145deg, #ffffff, #f8fafc);
+    background: rgba(255, 255, 255, 0.08); /* Darker list background */
     padding: 2rem;
     border-radius: 16px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    border: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15); /* Increased shadow intensity */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Added subtle border */
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .list:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2); /* Increased shadow intensity */
 }
 
 .list h3 {
     margin-bottom: 1rem;
-    color: #24292e;
-    border-bottom: 2px solid #e1e4e8;
+    color: #f9f9f9; /* Adjusted to a slightly darker shade of white */
+    border-bottom: 2px solid #4a5568; /* Darker border color */
     padding-bottom: 0.5rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Added text shadow */
 }
 
 ul {
@@ -236,7 +238,7 @@ ul {
 
 li {
     padding: 0.8rem 0;
-    border-bottom: 1px solid #e1e4e8;
+    border-bottom: 1px solid #4a5568; /* Darker border color */
 }
 
 li:last-child {
@@ -245,14 +247,16 @@ li:last-child {
 
 li a {
     text-decoration: none;
-    color: #0366d6;
+    color: #bbdefb; /* Adjusted color */
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Added text shadow */
 }
 
 li img {
     border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .list-header {
@@ -260,7 +264,7 @@ li img {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1rem;
-    border-bottom: 2px solid #e1e4e8;
+    border-bottom: 2px solid #4a5568; /* Darker border color */
     padding-bottom: 0.5rem;
 }
 
@@ -305,19 +309,18 @@ li img {
     padding: 0.8rem;
     border-radius: 8px;
     transition: background-color 0.2s ease;
-    background: linear-gradient(145deg, #ffffff, #f8fafc);
+    background: rgba(255, 255, 255, 0.08); /* Darker user item background */
     margin: 0.8rem 0;
     padding: 1rem;
     border-radius: 15px;
-    border: 1px solid rgba(0,0,0,0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Added subtle border */
     transition: all 0.2s ease;
 }
 
 .user-item:hover {
-    background-color: #f1f4f8;
-    background: linear-gradient(145deg, #f8fafc, #f0f4f8);
+    background-color: rgba(255, 255, 255, 0.12); /* Slightly brighter hover background */
     transform: translateX(5px);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2); /* Increased shadow intensity */
 }
 
 .user-item input[type="checkbox"] {
@@ -381,7 +384,7 @@ li img {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent); /* Reduced shine intensity */
     animation: processing-shine 1s infinite;
 }
 
@@ -461,29 +464,35 @@ li img {
     margin-bottom: 2rem;
 }
 
+#recommended-followers {
+    border: 2px solid #2ea44f;
+    margin-bottom: 2rem;
+}
+
 .no-results {
     text-align: center;
     padding: 1rem;
-    color: #57606a;
+    color: #d1d5db; /* Adjusted color */
     font-style: italic;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Added text shadow */
 }
 
 .user-stats {
-    color: #57606a;
+    color: #f0f8ff; /* AliceBlue - a more visible light color */
     font-size: 0.9rem;
     margin-left: auto;
     margin-right: 1rem;
-    background: #f0f4f8;
+    background: rgba(255, 255, 255, 0.08); /* Darker background */
     padding: 0.3rem 0.8rem;
     border-radius: 20px;
     font-size: 0.85rem;
-    color: #4a5568;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Added text shadow */
 }
 
 .footer {
     margin-top: 4rem;
     padding-top: 2rem;
-    border-top: 2px solid rgba(0,0,0,0.05);
+    border-top: 2px solid rgba(255, 255, 255, 0.1); /* Added subtle border */
     text-align: center;
 }
 
@@ -499,7 +508,8 @@ li img {
     align-items: center;
     gap: 0.8rem;
     font-size: 1.2rem;
-    color: #4a5568;
+    color: #d1d5db; /* Adjusted color */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Added text shadow */
 }
 
 .footer .fa-heart {
@@ -509,9 +519,7 @@ li img {
 
 .captain {
     font-weight: 700;
-    background: linear-gradient(120deg, #2b5876, #4e4376);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #bbdefb; /* Adjusted color to a lighter shade */
     padding: 0 0.5rem;
 }
 
@@ -519,19 +527,20 @@ li img {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    color: #2d3748;
+    color: #e2e8f0; /* Adjusted color */
     text-decoration: none;
     font-weight: 600;
     padding: 0.5rem 1rem;
     border-radius: 25px;
-    background: linear-gradient(145deg, #ffffff, #f8fafc);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    background: rgba(255, 255, 255, 0.08); /* Darker background */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15); /* Increased shadow intensity */
     transition: all 0.3s ease;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Added text shadow */
 }
 
 .github-link:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* Increased shadow intensity */
 }
 
 .year {
@@ -540,8 +549,8 @@ li img {
     color: #6f42c1;
     padding: 0.3rem 1rem;
     border-radius: 15px;
-    background: linear-gradient(145deg, #ffffff, #f8fafc);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    background: rgba(255, 255, 255, 0.08); /* Darker background */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15); /* Increased shadow intensity */
 }
 
 @keyframes heartbeat {
