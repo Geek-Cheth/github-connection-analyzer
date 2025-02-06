@@ -26,9 +26,15 @@
             <button onclick="showRecommendedUnfollows()" class="recommended-btn">
                 <i class="fas fa-user-shield"></i> Show Recommended Unfollows
             </button>
+            <button onclick="showRecommendedFollowers()" class="recommended-btn">
+                <i class="fas fa-user-plus"></i> Show Recommended Followers
+            </button>
         </div>
         <div id="loading" class="loading hidden">Analyzing...</div>
         <div id="error" class="error hidden"></div>
+        <div class="progress-container">
+            <div class="progress-bar" id="recommendation-progress"></div>
+        </div>
         <div id="results" class="results hidden">
             <div class="stats">
                 <div class="stat-box">
@@ -60,6 +66,22 @@
                         </div>
                     </div>
                     <ul id="recommended-list"></ul>
+                </div>
+                <div id="recommended-followers" class="list hidden">
+                    <div class="list-header">
+                        <h3>Recommended Followers</h3>
+                        <div class="info-tooltip">
+                            <i class="fas fa-info-circle"></i>
+                            <span class="tooltip-text">Users with similar follower/following ratio</span>
+                        </div>
+                        <div class="list-actions">
+                            <input type="checkbox" class="select-all" data-list="recommended-followers-list">
+                            <button class="follow-selected" data-list="recommended-followers-list">
+                                <i class="fas fa-user-plus"></i> Follow Selected
+                            </button>
+                        </div>
+                    </div>
+                    <ul id="recommended-followers-list"></ul>
                 </div>
                 <div class="list">
                     <div class="list-header">

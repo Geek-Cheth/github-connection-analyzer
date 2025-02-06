@@ -461,6 +461,11 @@ li img {
     margin-bottom: 2rem;
 }
 
+#recommended-followers {
+    border: 2px solid #2ea44f;
+    margin-bottom: 2rem;
+}
+
 .no-results {
     text-align: center;
     padding: 1rem;
@@ -553,4 +558,21 @@ li img {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
+}
+
+.progress-container {
+    width: 100%;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    height: 20px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #4CAF50;
+    width: 0%;
+    border-radius: 10px;
+    transition: width 0.2s ease;
 }
