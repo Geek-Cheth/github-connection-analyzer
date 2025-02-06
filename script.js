@@ -303,6 +303,126 @@ async function showRecommendedUnfollows() {
     }
 }
 
+// ...existing code...
+async function getRecommendedFollowers(username, headers) {
+    const recommendedFollowers = [];
+    let processedUsers = 0;
+    let potentialFollows = [];
+
+    updateLoadingMessage(`Fetching potential users to follow...`);
+
+    try {
+        // Fetch users that the current user is following
+        potentialFollows = await fetchGitHubData(`https://api.github.com/users/${username}/following?per_page=100`, headers);
+
+        const totalPotentialFollows = potentialFollows.length;
+        updateLoadingMessage(`Analyzing ${totalPotentialFollows} potential follows...`);
+
+        // Create a set of your followers for quick lookup
+        const myFollowersSet = new Set(globalFollowers.map(f => f.login));
+        const myFollowingSet = new Set(globalFollowing.map(f => f.login));
+
+        for (const potentialFollow of potentialFollows) {
+            try {
+                const url = `https://api.github.com/users/${potentialFollow.login}`;
+                console.log(`Fetching data for ${potentialFollow.login} from: ${url}`);
+
+                const response = await fetch(url, { headers });
+                if (!response.ok) {
+                    console.warn(`Failed to fetch user data: ${response.status}`);
+                    continue;
+                }
+
+                const userDetails = await response.json();
+
+                // Skip if user is already a follower OR is already being followed
+                if (myFollowersSet.has(potentialFollow.login) || myFollowingSet.has(potentialFollow.login)) {
+                    console.log(`Skipping existing connection: ${potentialFollow.login}`);
+                    continue;
+                }
+
+                // Recommendation criteria: Following >= Followers
+                if (userDetails.following >= userDetails.followers) {
+                    console.log(`✓ Found match: ${userDetails.login}`);
+                    recommendedFollowers.push({
+                        ...potentialFollow,
+                        followers: userDetails.followers,
+                        following: userDetails.following
+                    });
+                }
+
+                processedUsers++;
+                updateLoadingMessage(`Analyzed ${processedUsers}/${totalPotentialFollows} users...`);
+
+                if (recommendedFollowers.length >= 20) {
+                    console.log('Reached maximum recommendations, stopping analysis.');
+                    break;
+                }
+
+            } catch (error) {
+                console.error(`Error analyzing ${potentialFollow.login}:`, error);
+            }
+
+            await new Promise(resolve => setTimeout(resolve, 100));
+        }
+
+        console.log('Analysis Results:', {
+            totalProcessed: processedUsers,
+            recommendedCount: recommendedFollowers.length,
+            recommendations: recommendedFollowers
+        });
+
+        return recommendedFollowers;
+
+    } catch (error) {
+        showError('Error fetching recommended followers: ' + error.message);
+        return [];
+    }
+}
+
+async function showRecommendedFollowers() {
+    showLoading(true);
+    showError('');
+
+    try {
+        const username = document.getElementById('username').value.trim();
+        const pat = document.getElementById('pat').value.trim();
+
+        const headers = {
+            'Authorization': `token ${pat}`,
+            'Accept': 'application/vnd.github.v3+json'
+        };
+
+        const recommendedFollowers = await getRecommendedFollowers(username, headers);
+        const list = document.getElementById('recommended-followers-list');
+
+        if (recommendedFollowers.length === 0) {
+            list.innerHTML = `<li class="no-results">No recommended followers found.</li>`;
+        } else {
+            list.innerHTML = recommendedFollowers.map(user => `
+                <li class="user-item">
+                    <input type="checkbox" data-username="${user.login}">
+                    <a href="${user.html_url}" target="_blank">
+                        <img src="${user.avatar_url}" alt="${user.login}" width="25" height="25">
+                        ${user.login}
+                    </a>
+                    <span class="user-stats">
+                        Following: ${user.following} | Followers: ${user.followers}
+                    </span>
+                    <span class="action-status"></span>
+                </li>
+            `).join('');
+        }
+
+        document.getElementById('recommended-followers').classList.remove('hidden');
+        initializeListActions();
+    } catch (error) {
+        showError('Error: ' + error.message);
+    } finally {
+        showLoading(false);
+    }
+}
+
 // ...rest of existing code...
 
 function updateLoadingMessage(message) {
@@ -338,7 +458,7 @@ function updateFeedbackStatus(element, isSuccess, message) {
     statusElement.classList.add(isSuccess ? 'success' : 'error');
     statusElement.classList.add('show');
 
-    // Remove the status after 5 seconds.
+    // Remove the status after 5 seconds
     setTimeout(() => {
         statusElement.classList.remove('show');
     }, 5000);
