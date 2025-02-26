@@ -159,3 +159,33 @@
         max-width: 100%;
     }
 }
+
+.action-status {
+    font-size: 0.9rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.action-status.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.action-status.success {
+    background: linear-gradient(145deg, #dcffe4, #e6ffec);
+    color: #238636;
+    box-shadow: 0 2px 8px rgba(35, 134, 54, 0.1);
+}
+
+.action-status.error {
+    background: linear-gradient(145deg, #ffe5e5, #ffebe9);
+    color: #cb2431;
+    box-shadow: 0 2px 8px rgba(203, 36, 49, 0.1);
+    animation: errorShake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}

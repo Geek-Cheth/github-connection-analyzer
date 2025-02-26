@@ -264,13 +264,15 @@
                     userItem.classList.add('processing');
                     
                     try {
+                        const isFollowing = button.classList.contains('follow-selected');
+                        updateFeedbackStatus(userItem, true, isFollowing ? 'Following...' : 'Unfollowing...');
                         if (button.classList.contains('follow-selected')) {
-                            await followUser(checkbox.dataset.username, headers);
                             updateFeedbackStatus(userItem, true, 'Following');
+                            await followUser(checkbox.dataset.username, headers);
                         } else {
                             await unfollowUser(checkbox.dataset.username, headers);
-                            updateFeedbackStatus(userItem, true, 'Unfollowed');
                             userItem.classList.add('unfollowed');
+                            updateFeedbackStatus(userItem, true, 'Unfollowed');
                         }
                     } catch (error) {
                         updateFeedbackStatus(userItem, false, 'Failed');
@@ -310,17 +312,18 @@
 
     function updateFeedbackStatus(element, isSuccess, message) {
         const statusElement = element.querySelector('.action-status');
-        statusElement.innerHTML = isSuccess ? 
-            `<i class="fas fa-check-circle"></i> ${message}` :
-            `<i class="fas fa-times-circle"></i> ${message}`;
-        
         statusElement.className = 'action-status';
+        statusElement.innerHTML = isSuccess ? 
+            `<i class="fas fa-check"></i> ${message}` :
+            `<i class="fas fa-times"></i> ${message}`;
+        
+        void statusElement.offsetHeight; // Force repaint
         statusElement.classList.add(isSuccess ? 'success' : 'error');
         statusElement.classList.add('show');
 
         setTimeout(() => {
             statusElement.classList.remove('show');
-        }, 5000);
+        }, 3000);
     }
 
     document.addEventListener('DOMContentLoaded', () => {
