@@ -250,11 +250,67 @@ button:hover {
 }
 
 .list h3 {
-    margin-bottom: 1rem;
+    margin-bottom: 0;
     color: #f9f9f9;
-    border-bottom: 2px solid #4a5568;
     padding-bottom: 0.5rem;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #4a5568;
+}
+
+.list-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Checkbox styling */
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    border: 2px solid #4a5568;
+    border-radius: 4px;
+    background-color: transparent;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    transition: all 0.3s ease;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #4f46e5;
+    border-color: #4f46e5;
+    position: relative;
+}
+
+input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 14px;
+}
+
+/* Unfollow button styling */
+.unfollow-selected {
+    background: linear-gradient(to right, #dc2626, #ef4444) !important;
+    border: none !important;
+    box-shadow: 0 2px 4px rgba(220, 38, 38, 0.2) !important;
+}
+
+.unfollow-selected:hover {
+    background: linear-gradient(to right, #b91c1c, #dc2626) !important;
+    box-shadow: 0 4px 8px rgba(220, 38, 38, 0.3) !important;
 }
 
 /* User items */
