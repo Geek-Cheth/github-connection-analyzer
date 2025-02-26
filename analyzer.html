@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Following Analyzer - GitHub Connection Analyzer</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%23e2e8f0' d='M8 0a8 8 0 0 0-2.53 15.59c.42.08.57-.19.57-.42 0-.21-.07-.77-.15-1.51-2.19.47-2.77-1.07-2.77-1.07-.36-.94-.94-1.2-.94-1.2-.77-.53.08-.52.08-.52.86.08 1.32.88 1.32.88.75 1.28 1.98.91 2.45.69.07-.53.29-.91.51-1.11-1.88-.21-3.86-.94-3.86-4.24 0-.94.34-1.71.91-2.31 0-.23-.35-1.17.76-2.42 0 0 .75-.23 2.45.89.71-.2 1.47-.3 2.23-.3.76 0 1.51.1 2.23.3 1.7-1.12 2.45-.89 2.45-.89.41 1.25.76 2.19.76 2.42.57.61.91 1.37.91 2.31 0 3.31-1.98 3.94-3.87 4.24.3.26.58.76.58 1.53 0 1.11-.07 2.01-.07 2.28 0 .24.15.5.58.42A8 8 0 0 0 16 8a8 8 0 0 0-8-8z'/%3E%3C/svg%3E" type="image/svg+xml">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="analyzer.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="progress" class="progress-bar"></div>
+    <div class="container">
+        <div class="header-section">
+            <h1>
+                <i class="fab fa-github fa-lg pulse"></i>
+                Following Analyzer
+            </h1>
+            <p class="header-subtitle">Analyze and manage followers from another user's following list</p>
+            <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Main Analysis</a>
+        </div>
+        <div class="input-section">
+            <div class="credentials-section">
+                <input type="text" id="username" placeholder="Enter Your GitHub Username" autocomplete="off">
+                <input type="password" id="pat" placeholder="Enter Your GitHub PAT Token" autocomplete="off">
+            </div>
+            <div class="target-section">
+                <input type="text" id="targetUsername" placeholder="Enter Target User's Username" autocomplete="off">
+                <button id="analyzeButton">
+                    <i class="fas fa-search"></i> Analyze Following List
+                </button>
+            </div>
+        </div>
+        <div id="loading" class="loading hidden">Analyzing...</div>
+        <div id="error" class="error hidden"></div>
+        <div id="results" class="results hidden">
+            <div class="stats">
+                <div class="stat-box">
+                    <h3>Target's Following</h3>
+                    <span id="target-following-count">0</span>
+                </div>
+                <div class="stat-box">
+                    <h3>Already Following</h3>
+                    <span id="already-following-count">0</span>
+                </div>
+                <div class="stat-box">
+                    <h3>Not Following</h3>
+                    <span id="not-following-count">0</span>
+                </div>
+            </div>
+            <div class="filter-section">
+                <input type="text" id="filterInput" placeholder="Filter users..." class="filter-input">
+                <select id="sortSelect" class="sort-select">
+                    <option value="name">Sort by Name</option>
+                    <option value="followers">Sort by Followers</option>
+                    <option value="repos">Sort by Repositories</option>
+                </select>
+                <div class="filter-checkbox">
+                    <input type="checkbox" id="hideFollowingMe" class="filter-toggle">
+                    <label for="hideFollowingMe">Hide users who follow me</label>
+                </div>
+            </div>
+            <div class="lists-container">
+                <div class="list">
+                    <div class="list-header">
+                        <h3>Users You're Already Following</h3>
+                        <div class="list-actions">
+                            <input type="checkbox" class="select-all" data-list="already-following-list">
+                            <button class="unfollow-selected" data-list="already-following-list">
+                                <i class="fas fa-user-minus"></i> Unfollow Selected
+                            </button>
+                        </div>
+                    </div>
+                    <ul id="already-following-list"></ul>
+                </div>
+                <div class="list">
+                    <div class="list-header">
+                        <h3>Users You're Not Following</h3>
+                        <div class="list-actions">
+                            <input type="checkbox" class="select-all" data-list="not-following-list">
+                            <button class="follow-selected" data-list="not-following-list">
+                                <i class="fas fa-user-plus"></i> Follow Selected
+                            </button>
+                        </div>
+                    </div>
+                    <ul id="not-following-list"></ul>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="footer-content">
+                <p>
+                    Crafted with <i class="fas fa-heart"></i> by 
+                    <span class="captain">Captain</span> 
+                    <a href="https://github.com/Geek-Cheth" target="_blank" class="github-link">
+                        <i class="fab fa-github"></i> Geek-Cheth
+                    </a>
+                </p>
+                <span class="year">2025 - 2026</span>
+            </div>
+        </footer>
+    </div>
+    <script src="analyzer.js"></script>
+</body>
+</html>

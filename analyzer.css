@@ -1,0 +1,161 @@
+#progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0;
+    background: linear-gradient(to right, #4f46e5, #7c3aed);
+    transition: width 0.3s ease;
+    box-shadow: 0 0 8px rgba(124, 58, 237, 0.5);
+    z-index: 1000;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #bbdefb;
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.08);
+    transition: all 0.3s ease;
+}
+
+.back-link:hover {
+    transform: translateX(-5px);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.credentials-section,
+.target-section {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.target-section {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.filter-section {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+    backdrop-filter: blur(10px);
+}
+
+.filter-input {
+    flex: 1;
+    min-width: 200px;
+}
+
+.sort-select {
+    padding: 0.8rem 1rem;
+    border: 2px solid #4a5568;
+    border-radius: 8px;
+    font-size: 16px;
+    background: transparent;
+    color: #fff;
+    min-width: 180px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.sort-select:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+    outline: none;
+}
+
+.sort-select option {
+    background-color: #1a1c2c;
+    color: #fff;
+}
+
+.filter-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    color: #e2e8f0;
+    backdrop-filter: blur(10px);
+}
+
+.filter-toggle {
+    width: auto;
+    margin: 0;
+    cursor: pointer;
+}
+
+.filter-checkbox label {
+    font-size: 0.9rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.user-name {
+    font-weight: 600;
+    color: #e2e8f0;
+}
+
+.user-bio {
+    font-size: 0.9rem;
+    color: #a0aec0;
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.user-item.unfollowed {
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .filter-section {
+        flex-direction: column;
+    }
+
+    .filter-input,
+    .sort-select {
+        width: 100%;
+    }
+
+    .user-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .user-bio {
+        max-width: 100%;
+    }
+}
